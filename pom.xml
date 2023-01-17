@@ -53,7 +53,7 @@
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.2</version>
           <configuration>
-            <port>9090</port>
+            <port>8082</port>
             <path>/</path>
             <fork>true</fork>
           </configuration> 
