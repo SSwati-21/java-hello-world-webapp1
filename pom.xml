@@ -68,7 +68,7 @@
           <configuration>
             <port>9091</port>
             <path>/</path>
-           <!-- <fork>true</fork> -->
+           <fork>true</fork>
           </configuration> 
         </plugin>
       </plugins>
