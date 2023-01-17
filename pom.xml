@@ -54,6 +54,7 @@
   <version>2.0</version>
   <configuration>
     <port>9090</port>
+    <path>/</path>
   </configuration> 
   <executions>
     <execution>
