@@ -55,6 +55,7 @@
           <configuration>
             <port>9090</port>
             <path>/</path>
+            <fork>true</fork>
           </configuration> 
         </plugin>
       </plugins>
