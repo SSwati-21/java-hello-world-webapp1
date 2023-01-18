@@ -64,7 +64,7 @@
                 <goal>run</goal>
                </goals>
                <configuration>
-                <!-- <fork>true</fork> -->
+                <fork>true</fork>
                </configuration>
             </execution>
             <execution>
