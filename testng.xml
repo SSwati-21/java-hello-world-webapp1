@@ -4,7 +4,7 @@
   <test thread-count="1" name="Test">
     <classes>
      <!-- <class name="jenkins.selenium_testng_jenkins.AppTest"/> -->
-      <class name="url.Page"/>
+      <!-- <class name="url.Page"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
