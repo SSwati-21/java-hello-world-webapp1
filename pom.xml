@@ -39,6 +39,10 @@
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
+	  <configuration>
+           <outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat 10.0\webapps</outputDirectory>
+           <!-- Example of Tomcat webapps location :D:\tomcat\webapps\ -->
+        </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
