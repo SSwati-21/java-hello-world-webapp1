@@ -23,7 +23,7 @@ public class PageTest {
     @Test
     public void login() throws InterruptedException {
 	driver.get("https://localhost:9090");	        
-	Thread.sleep(10000);
+	Thread.sleep(5000);
         Assert.assertEquals(driver.getTitle(),"localhost");
 
     }
