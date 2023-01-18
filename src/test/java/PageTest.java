@@ -1,5 +1,3 @@
-package url;
-
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
