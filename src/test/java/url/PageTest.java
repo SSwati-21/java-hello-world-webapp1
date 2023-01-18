@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-public class LoginTest {
+public class PageTest {
 	WebDriver driver;
 	
     @BeforeTest
