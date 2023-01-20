@@ -1,0 +1,88 @@
+//Jenkinsfile (Declarative Pipeline)
+
+// --------------------------------------------
+// -- CREATED BY: Swati 
+// -- Created Date:
+// -- https://github.com/SSwati-21/java-hello-world-webapp1/ --
+// ----------------------------------------------
+
+pipeline {
+    		agent any
+		
+		// ------------------------------------
+		// -- STAGE: Download GIT Code
+		// ------------------------------------
+	    	stages {
+        		stage("Git") {
+            				steps {
+               					git 'https://github.com/SSwati-21/demo-tools.git'
+            				}
+        		}
+	
+		// ------------------------------------
+		// -- STAGE: Build
+		// ------------------------------------
+		stage("Build") {
+	    	          	steps {
+                		echo 'Building the application'
+//                		echo "$PATH"
+//                		echo "${env.WORKSPACE}"
+//				echo "${env.GIT_BRANCH}"
+//                		bat "mvn.cmd -f ${env.WORKSPACE}\\pom.xml clean install"
+				bat "mvn clean install"
+				}
+       		}
+
+		// ------------------------------------
+		// -- STAGE: Test
+		// ------------------------------------
+		stage("Test") {
+			when {
+				expression { env.GIT_BRANCH ==  'origin/master' }
+			}
+            		steps {
+                		echo 'Testing the application in Branch master(default)'
+                		bat "mvn.cmd test"
+            			junit '**/target/surefire-reports/TEST-*.xml'
+			}
+            	}  
+		
+		// ------------------------------------
+		// -- STAGE: SonarQube
+		// ------------------------------------
+		
+		stage('SonarQube') {
+			steps{
+                		withSonarQubeEnv('SonarQube') { bat "mvn.cmd sonar:sonar"}
+                	     }
+			     
+			post {
+        			always {
+            				echo 'Sonar is mandatory for production deployment and will always run'
+        			}
+        			success {
+            				echo 'Code is GREEN for Production!'
+        			}
+				failure {
+            				echo 'Code is RED check sonar report, code will not be deployed in Production'
+					script {
+            					error "This pipeline stops here!"
+        				}
+        			}
+        			unstable {
+            				echo 'Review Sonar reports before moving to Production'
+					input ('Do you want to proceed?')
+        			}	
+			}
+		}
+		
+		// ------------------------------------
+		// -- STAGE: Deploying
+		// ------------------------------------
+		stage("Deploy") {
+            			steps {
+                			echo 'Deploying the application'
+            			}
+		}
+	}
+}
