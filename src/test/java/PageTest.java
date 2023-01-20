@@ -24,7 +24,7 @@ public class PageTest {
     @Test
     public void login() throws InterruptedException {
 	driver.get("http://localhost:9090/java-hello-world");	        
-	Thread.sleep(20);
+	Thread.sleep(30);
         Assert.assertEquals(driver.getTitle(),"Hello World");
 
     }
