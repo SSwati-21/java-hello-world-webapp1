@@ -15,7 +15,7 @@ pipeline {
 	    	stages {
         		stage("Git") {
             				steps {
-               					git 'https://github.com/SSwati-21/demo-tools.git'
+               					git 'https://github.com/SSwati-21/java-hello-world-webapp1.git'
             				}
         		}
 	
@@ -24,13 +24,10 @@ pipeline {
 		// ------------------------------------
 		stage("Build") {
 	    	          	steps {
-                		echo 'Building the application'
-//                		echo "$PATH"
-//                		echo "${env.WORKSPACE}"
-//				echo "${env.GIT_BRANCH}"
-//                		bat "mvn.cmd -f ${env.WORKSPACE}\\pom.xml clean install"
-				bat "mvn clean install"
-				}
+                		    echo 'Building the application'
+                                       bat "mvn clean install"
+				         sleep 30
+				     }
        		}
 
 		// ------------------------------------
@@ -42,9 +39,8 @@ pipeline {
 			}
             		steps {
                 		echo 'Testing the application in Branch master(default)'
-                		bat "mvn.cmd test"
-            			junit '**/target/surefire-reports/TEST-*.xml'
-			}
+                		bat "mvn test"
+            			}
             	}  
 		
 		// ------------------------------------
@@ -71,8 +67,8 @@ pipeline {
         			}
         			unstable {
             				echo 'Review Sonar reports before moving to Production'
+					}
 					input ('Do you want to proceed?')
-        			}	
 			}
 		}
 		
@@ -81,7 +77,8 @@ pipeline {
 		// ------------------------------------
 		stage("Deploy") {
             			steps {
-                			echo 'Deploying the application'
+                			bat "docker cp C:\\Users\\Swati\\package\\webapps\\java-hello-world.war d343152480ea:/usr/local/tomcat/webapps"
+					echo 'Deploying the application'
             			}
 		}
 	}
