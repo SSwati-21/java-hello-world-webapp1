@@ -68,7 +68,7 @@ pipeline {
         			unstable {
             				echo 'Review Sonar reports before moving to Production'
 					}
-					input ('Do you want to proceed?')
+					
 			}
 		}
 		
