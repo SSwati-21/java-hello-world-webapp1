@@ -16,9 +16,6 @@ public class PageTest {
         System.setProperty("webdriver.chrome.driver","C:\\Users\\Swati\\JavaProjects\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-    //    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    //    driver.manage().deleteAllCookies();
-       
     }
     
     @Test
