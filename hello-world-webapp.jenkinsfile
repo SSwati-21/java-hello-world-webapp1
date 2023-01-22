@@ -53,24 +53,20 @@ pipeline {
                 	     }
 			     
 			post {
-        			always {
-				        emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        			always {				       
             				echo 'Sonar is mandatory for production deployment and will always run'
         			}
         			success {
             				echo 'Code is GREEN for Production!'
-					emailext body: 'Code is Green for Production', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Green'
-        			}
+					        			}
 				failure {
             				echo 'Code is RED check sonar report, code will not be deployed in Production'
-					emailext body: 'Code is RED check sonar report, code will not be deployed in Production', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Red'
 					script {
             					error "This pipeline stops here!"
         				}
         			}
         			unstable {
             				echo 'Review Sonar reports before moving to Production'
-					emailext body: 'Review Sonar reports before moving to Production', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Yellow'
 					}
 					
 			}
