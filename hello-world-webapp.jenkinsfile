@@ -54,6 +54,7 @@ pipeline {
 			     
 			post {
         			always {
+				        emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
             				echo 'Sonar is mandatory for production deployment and will always run'
         			}
         			success {
