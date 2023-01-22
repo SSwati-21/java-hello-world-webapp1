@@ -78,7 +78,7 @@ pipeline {
 		stage("Deploy") {
             			steps {
                 			//bat "docker cp C:\\Users\\Swati\\package\\webapps\\java-hello-world.war 8be2713e2b88:/usr/local/tomcat/webapps"
-					       bat "scp C:\\Program Files\\Apache Software Foundation\\Tomcat 10.0\\webapps\\java-hello-world.war dockeruser@kubernetes.docker.internal:/usr/local/tomcat/webapps"
+					       bat "scp ${env.CATALINA_HOME}\\webapps\\java-hello-world.war dockeruser@kubernetes.docker.internal:/usr/local/tomcat/webapps"
 					echo 'Deploying the application'
             			}
 		}
